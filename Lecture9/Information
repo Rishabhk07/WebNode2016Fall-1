@@ -1,0 +1,67 @@
+Paths
+
+C:\Windows\ ... 
+.\file.js (in this folder)
+..\..\file.js (in parent folder)
+
+/Home/Arnav/ ... 
+./file.js
+../../file.js
+
+CMD/ Terminal / Gnome-Terminal / Xterm / iTerm 
+ - Command Line Interface of OS
+ - user@system:<Path> - $ 
+
+Node / Python / iPython / irb / ruby 
+
+ - CLI for Languages 
+ - Interpreter interface 
+
+node(js) - 
+	Node JS interpreter
+	Run interactive interpreter
+		Win32> node 
+			> javascript statements here
+		Unix$ node
+			> javascript statements here 
+
+	Run file interpreter
+		Win32> node \path\to\file
+
+		Unix$ node /path/to/file 
+npm - 
+	Node JS Package Manager 
+
+	npm install <package name> 
+			locally install (in this folder)
+			./node_modules/<package name>
+
+	(sudo) npm install -g <package name>
+			globally install (across whole OS)
+			/usr/local/lib/node_modules/<package name> //folder
+			/usr/local/bin/<package name>  //executable
+
+	npm uninstall (-g) <package name>
+	npm unbuild  // only for local
+	npm view <package name> // show details 
+	npm view <package> <property> // show single detail
+	npm update (-g) <package name> 
+
+
+	npm init // starts new npm project 
+	npm install // installs all dependencies
+	npm install <package> --save // install and save to package.json 
+
+
+var a =10;
+
+
+function reqHandler(req, res, next) {
+	a 
+}
+ 
+
+app.get('/asdasd', (a,b) => (a+b)) 
+
+
+
