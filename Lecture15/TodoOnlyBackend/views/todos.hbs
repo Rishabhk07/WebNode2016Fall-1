@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<form method="POST">
+    <input type="text" name="todo" placeholder="Add new Todo">
+    <input formaction="/addtodo" type="submit" value="Add">
+</form>
+
+<ul>
+    {{#each todos}}
+        <li>
+            <input type="checkbox" {{#if done}} checked {{/if}}>
+            <span>{{todo}}</span>
+        </li>
+    {{/each}}
+</ul>
+</body>
+</html>
