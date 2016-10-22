@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directions</title>
+</head>
+<body>
+<div id="map" style="width: 400px; height: 400px"></div>
+
+<div style="display: inline-block">
+    <input type="text" placeholder="origin" id="orig">
+    <input type="number" placeholder="origin lat" id="origlat">
+    <input type="number" placeholder="origin lng" id="origlng">
+</div>
+<button id="calcstring">Calculate (String)</button>
+<button id="calclatlng">Calculate (LatLng)</button>
+
+
+<div style="display: inline-block">
+    <input type="text" placeholder="origin" id="dest">
+    <input type="number" placeholder="origin lat" id="destlat">
+    <input type="number" placeholder="origin lng" id="destlng">
+</div>
+
+
+
+<script>
+    var map, directionsService, directionRenderer;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 28, lng: 77},
+            zoom: 5
+        });
+
+        directionsService = new google.maps.DirectionsService();
+        directionRenderer = new google.maps.DirectionsRenderer();
+        directionRenderer.setMap(map);
+    }
+
+    function getDirections(origin, destination) {
+        var dirReq = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'DRIVING'
+        };
+
+        directionsService.route(dirReq, function (result,status) {
+            console.log(status);
+            if (status == 'OK') {
+
+                directionRenderer.setDirections(result);
+            }
+        })
+    }
+
+    document.getElementById('calcstring')
+            .addEventListener('click', function () {
+                getDirections(
+                        document.getElementById('orig').value,
+                        document.getElementById('dest').value
+                )
+            });
+    document.getElementById('calclatlng')
+            .addEventListener('click', function () {
+                getDirections(
+                        {
+                            lat: parseFloat(document.getElementById('origlat').value),
+                            lng: parseFloat(document.getElementById('origlng').value)
+
+                        },
+                        {
+                            lat: parseFloat(document.getElementById('destlat').value),
+                            lng: parseFloat(document.getElementById('destlng').value)
+                        }
+                )
+            })
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjKXRQX44ZdgtP1AfyfvbTfUWvYaA961o&callback=initMap">
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EventCapture</title>
+    <style>
+        div {
+            padding: 10px;
+            background-color: lightblue;
+            border: 5px solid brown;
+        }
+    </style>
+</head>
+<body>
+
+<div id="one">
+    <div id="two">
+        <div id="three">
+            <div id="four">
+                <div id="five">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var div1, div2, div3, div4, div5;
+    div1 = document.getElementById('one');
+    div2 = document.getElementById('two');
+    div3 = document.getElementById('three');
+    div4 = document.getElementById('four');
+    div5 = document.getElementById('five');
+
+    function clickFn(id) {
+        console.log(id);
+    }
+
+    //Bubbles
+//    div1.addEventListener('click', function () {
+//        clickFn('bub: one')
+//    });
+    div2.addEventListener('click', function () {
+        clickFn('bub: two')
+    })
+//    div3.addEventListener('click', function () {
+//        clickFn('bub: three')
+//    })
+    div4.addEventListener('click', function () {
+        clickFn('bub: four')
+    })
+//    div5.addEventListener('click', function () {
+//        clickFn('bub: five')
+//    })
+
+    // Captures
+    div1.addEventListener('click', function (event) {
+        clickFn('cap : one')
+        console.log(event);
+        event.stopPropagation();
+
+    }, true);
+//    div2.addEventListener('click', function () {
+//        clickFn('cap : two')
+//    }, true)
+    div3.addEventListener('click', function () {
+        clickFn('cap : three')
+    }, true)
+//    div4.addEventListener('click', function () {
+//        clickFn('cap : four')
+//    }, true)
+    div5.addEventListener('click', function (event) {
+        clickFn('cap : five')
+        console.log(event);
+    }, true)
+</script>
+
+</body>
+</html>
